@@ -113,7 +113,7 @@ const Header = ({ view, onViewChange }: HeaderProps) => {
           animate={{
             x: view === "grid" ? 0 : 56,
             transition: {
-              duration: 0.3,
+              duration: 1.5,
             },
           }}
         />
@@ -133,31 +133,29 @@ function App() {
     <>
       <div className='mx-auto max-w-5xl bg-slate-100 border-x p-20 w-full min-h-screen'>
         <Header view={view} onViewChange={handleViewChange} />
-        <AnimatePresence initial={false} mode="wait">
+        <AnimatePresence initial={false} mode="popLayout">
           {
             view === "grid" ? (
               <motion.div
               key="grid"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: 20, x: 0 }}
+              animate={{ opacity: 1, y: 0, x: 20 }}
+              exit={{ opacity: 0, x: 0, y: 20 }}
               layoutId="gridView"
               transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 30,
-                duration: 0.1,
+                
+                duration: 2,
               }}
               >
                 <Grid />
               </motion.div>) : (
               <motion.div
               key="list"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: 20, x: 0 }}
+              animate={{ opacity: 1, y: 0, x: 20 }}
+              exit={{ opacity: 0, y: 20, x: 0 }}
               layoutId="listView"
-              transition={{ type: "spring", duration: 0.3, stiffness: 300, damping: 30 }}
+              transition={{ type: "spring", duration: 2 }}
               >
                 <List />
               </motion.div>)}
