@@ -1,23 +1,10 @@
-import { LayoutGrid, ListIcon, LucideIcon, } from "lucide-react"
+// import { LayoutGrid, ListIcon, LucideIcon, } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
 import Grid, { Header, List, ViewType } from "./gridTolist"
 
 
 
-
-
-const listItem: {
-    name: ViewType;
-    icon: LucideIcon;
-}[] = [{
-    name: "grid",
-    icon: LayoutGrid
-},
-{
-    name: "list",
-    icon: ListIcon
-}]
 
 function App() {
   const [view, setView] = useState<ViewType>("grid")
@@ -29,7 +16,7 @@ function App() {
   return (
     <>
       <div className='mx-auto max-w-5xl bg-slate-100 border-x p-20 w-full min-h-screen'>
-        {/* <Header view={view} onViewChange={handleViewChange} />
+        <Header view={view} onViewChange={handleViewChange} />
         <AnimatePresence initial={false} mode="wait">
           {
             view === "grid" ? (
@@ -56,7 +43,7 @@ function App() {
               >
                 <List />
               </motion.div>)}
-        </AnimatePresence> */}
+        </AnimatePresence>
       </div>
     </>
   )
